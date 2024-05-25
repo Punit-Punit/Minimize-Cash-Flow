@@ -1,35 +1,35 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class Person{
+class Bank{
     public:
     string name;
     int totalAmount;
 };
 
 
-int getMin(int numPerson,Person array[])
+int getMin(int numBank,Bank array[])
 {
     int index = 0;
-    for (int i = 1; i < numPerson; i++)
+    for (int i = 1; i < numBank; i++)
         if (array[i].totalAmount < array[index].totalAmount)
             index = i;
     return index;
 }
 
-int getMax(int numPerson,Person array[])
+int getMax(int numBank,Bank array[])
 {
     int index = 0;
-    for (int i = 1; i < numPerson; i++)
+    for (int i = 1; i < numBank; i++)
         if (array[i].totalAmount > array[index].totalAmount)
             index = i;
     return index;
 }
 
 
-void minimizeFlow(int numPerson,Person array[]){
-     int miniAmount = getMin(numPerson,array);
-     int maxiAmount = getMax(numPerson,array);
+void minimizeFlow(int numBank,Bank array[]){
+     int miniAmount = getMin(numBank,array);
+     int maxiAmount = getMax(numBank,array);
      
      if(array[miniAmount].totalAmount==0&&array[maxiAmount].totalAmount==0) return;
      
@@ -40,20 +40,20 @@ void minimizeFlow(int numPerson,Person array[]){
      
      cout<<array[maxiAmount].name <<" Pays Rs."<<mini<<" to "<<array[miniAmount].name<<endl;
      
-     minimizeFlow(numPerson,array);
+     minimizeFlow(numBank,array);
 }
 
 int main() {
 	// your code goes here
 	
-	int numPerson;
-	cin>>numPerson;
-	cout<<"Enter the number of Person involve in Transactions: "<<numPerson<<endl;
-	Person array[numPerson];
+	int numBank;
+	cin>>numBank;
+	cout<<"Enter the number of Person involve in Transactions: "<<numBank<<endl;
+	Bank array[numBank];
 	
 	unordered_map<string,int>mp;  //map--> name with index
 	
-	for(int i=0;i<numPerson;i++){
+	for(int i=0;i<numBank;i++){
 	    string s1;
 	    cin>>s1;
 	    cout<<"Enter the name of "<<(i+1)<<"th Person: "<<s1<<endl;
@@ -61,7 +61,7 @@ int main() {
 	    mp[s1] = i;
 	}
 	
-	vector<vector<int>>transactions(numPerson,vector<int>(numPerson,0));
+	vector<vector<int>>transactions(numBank,vector<int>(numBank,0));
 	int numberOfTransactions;
 	cin>>numberOfTransactions;
 	cout<<endl<<"Enter the number of Transactions: "<<numberOfTransactions<<endl;
@@ -76,33 +76,33 @@ int main() {
 	    transactions[mp[from]][mp[to]] = amount;
 	}
 	
-	for(int i=0;i<numPerson;i++){
+	for(int i=0;i<numBank;i++){
 	     int value = 0;
-	     for(int j=0;j<numPerson;j++){
+	     for(int j=0;j<numBank;j++){
 	          value = value + transactions[j][i] - transactions[i][j];
 	     }
 	     array[i].totalAmount = value;
 	}
 	
 	cout<<endl<<"Minimum Required transactions:"<<endl;
-	minimizeFlow(numPerson,array);
+	minimizeFlow(numBank,array);
 	return 0;
 
 }
 
 /* Input Format
 5
-Punit
-Saumy
-Aryan 
-Vishal
-Anoop
+Bank_1
+Bank_2
+Bank_3
+Bank_4
+Bank_5
 7
-Punit Aryan 1000
-Punit Anoop 2000
-Saumy Vishal 3000
-Aryan Anoop 4000
-Vishal Punit 5000
-Anoop Saumy 6000
-Aryan Saumy 7000
+Bank_1 Bank_3 1000
+Bank_1 Bank_5 2000
+Bank_2 Bank_4 3000
+Bank_3 Bank_5 4000
+Bank_4 Bank_1 5000
+Bank_5 Bank_2 6000
+Bank_3 Bank_2 7000
 */
