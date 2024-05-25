@@ -1,4 +1,4 @@
-# This system minimizes the number of transactions between multiple persons who borrow money from each other.
+# This system minimizes the number of transactions between multiple people who borrow money from each other.
 
 
 
