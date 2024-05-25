@@ -37,3 +37,7 @@
 
 If any one OR both become zero, means it completely settles down.
 We will continue the above process until all Person will not settle down completely.
+
+# Final Answer of above example: <br>
+Aryan Pays Rs.10000 to Saumy <br>
+Vishal Pays Rs.2000 to Punit
