@@ -2,7 +2,7 @@
 
 
 
-  Let's take an example. say we have the following Persons:
+  Let's take an example. say we have the following Banks:
     1.Bank_1
     2.Bank_2
     3.Bank_3
