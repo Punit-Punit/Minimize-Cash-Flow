@@ -48,7 +48,7 @@ int main() {
 	
 	int numBank;
 	cin>>numBank;
-	cout<<"Enter the number of Person involve in Transactions: "<<numBank<<endl;
+	cout<<"Enter the number of Banks involve in Transactions: "<<numBank<<endl;
 	Bank array[numBank];
 	
 	unordered_map<string,int>mp;  //map--> name with index
@@ -56,7 +56,7 @@ int main() {
 	for(int i=0;i<numBank;i++){
 	    string s1;
 	    cin>>s1;
-	    cout<<"Enter the name of "<<(i+1)<<"th Person: "<<s1<<endl;
+	    cout<<"Enter the name of "<<(i+1)<<"th Bank: "<<s1<<endl;
 	    array[i].name = s1;
 	    mp[s1] = i;
 	}
